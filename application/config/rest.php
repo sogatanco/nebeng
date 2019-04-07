@@ -633,4 +633,4 @@ $config['0']=array('api/register');
 $config['1']=array('api/editprofil', 'api/bengkel', 'api/ulasan');
 
 // for public
-$config['2']=array('api/register', 'api/login', 'api/general');
+$config['2']=array('api/register', 'api/login', 'api/general', 'api/adminlogin');
