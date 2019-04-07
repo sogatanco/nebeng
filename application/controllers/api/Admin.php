@@ -14,6 +14,10 @@ class Admin extends REST_Controller
         $this->objOfJwt=new ImplementJwt();
         $this->load->model('Bengkel_model', 'bengkel');
     }
+
+    public function login_post(){
+        
+    }
 }
 
 
