@@ -15,6 +15,7 @@ class Login extends REST_Controller
         $this->objOfJwt=new ImplementJwt();
         $this->load->model('Login_model', 'login');
         $this->load->model('Register_model', 'user');
+        $this->load->model('Adminlogin_model', 'admin');
     }
 
     function index_post()
@@ -47,6 +48,33 @@ class Login extends REST_Controller
                 ], REST_Controller::HTTP_OK); 
             }
             
+        }
+    }
+
+    function admin_post(){
+        $username=$this->post('username');
+        $pass=$this->post('pass');
+
+        if($this->login->loginAdmin($username, $pass)>0){
+            $datatoken=[
+                'username'=>$username,
+                'level'=>0,
+                'lastLogin'=>date("Y-m-d h:i:sa"),
+                'ipaddress'=>$this->input->ip_address()
+            ];
+            $token=$this->objOfJwt->GenerateToken($datatoken);
+            $this->login->updateToken($token, $username);
+            $this->response([
+                'status' => true,
+                'token' => $token,
+                'data'=>$datatoken
+            ], REST_Controller::HTTP_OK); 
+        }
+        else{
+            $this->response([
+                'status' => false,
+                'message' => 'username and password not match'
+            ], REST_Controller::HTTP_NOT_FOUND); 
         }
     }
 }
