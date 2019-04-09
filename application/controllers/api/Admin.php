@@ -10,12 +10,30 @@ class Admin extends REST_Controller
 {
     function __construct()
     {
-        // Construct the parent class
         parent::__construct();
         $this->objOfJwt=new ImplementJwt();
         $this->load->model('Admin_model', 'admin');
     }
+// melihat list bengkel yang perlu ditinjau
+    function viewbengkel_get(){
+        $id=$this->get('id');
+        $bengkel=$this->admin->getBengkel($id);
 
+        if($bengkel){
+            $this->response([
+                'status' => true,
+                'data' =>  $bengkel
+            ], REST_Controller::HTTP_OK);   
+        }
+        else{
+            $this->response([
+                'status' => false,
+                'message' => 'bengkel not found'
+            ], REST_Controller::HTTP_NOT_FOUND); 
+        }
+    }
+
+// proses approve bengkel 
     function approvebengkel_put(){
         $id=$this->put('idbengkel');
 
@@ -33,4 +51,6 @@ class Admin extends REST_Controller
             ], REST_Controller::HTTP_NOT_FOUND); 
         }   
     }
+
+
 }
