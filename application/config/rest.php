@@ -627,10 +627,10 @@ $config['allowed_cors_origins'] = [];
 $config['forced_cors_headers'] = [];
 
 // for admin
-$config['0']=array('api/register');
+$config['0']=array('api/admin');
 
 // for user
 $config['1']=array('api/editprofil', 'api/bengkel', 'api/ulasan');
 
 // for public
-$config['2']=array('api/register', 'api/login', 'api/general', 'api/adminlogin');
+$config['2']=array('api/register', 'api/login', 'api/general');

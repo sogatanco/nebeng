@@ -6,7 +6,7 @@ require APPPATH . 'libraries/REST_Controller.php';
 require APPPATH . 'libraries/Format.php';
 require APPPATH . 'libraries/ImplementJwt.php';
 
-class Login extends REST_Controller
+class Admin extends REST_Controller
 {
     function __construct()
     {
@@ -17,6 +17,20 @@ class Login extends REST_Controller
     }
 
     function approvebengkel_put(){
-        
+        $id=$this->put('idbengkel');
+
+        if($this->admin->approveBengkel($id)>0)
+        {
+            $this->response([
+                'status' => true,
+                'message'=>'bengkel approved'
+            ], REST_Controller::HTTP_OK);
+        }
+        else{
+            $this->response([
+                'status' => FALSE,
+                'message' => 'Failed to approve'
+            ], REST_Controller::HTTP_NOT_FOUND); 
+        }   
     }
 }
