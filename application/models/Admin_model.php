@@ -16,4 +16,24 @@ class Admin_model extends CI_Model
             return $this->db->get_where('bengkel', ['bk_approved'=>0])->result_array();
         }
     }
+
+    public function deleteBengkel($id)
+    {
+        $this->db->delete('bengkel',['bk_id'=>$id]);
+        return $this->db->affected_rows();
+    }
+
+    public function deleteUser($username)
+    {
+        $this->db->delete('user', ['us_email'=>$username, 'us_level'=>1]);
+        return $this->db->affected_rows();
+    }
+
+    public function deleteUlasan($id)
+    {
+        $this->db->delete('ulasan', ['ul_id'=>$id]);
+        return $this->db->affected_rows();
+    }
+
+
 }

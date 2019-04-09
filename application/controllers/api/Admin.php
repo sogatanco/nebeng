@@ -52,5 +52,59 @@ class Admin extends REST_Controller
         }   
     }
 
+// fungsi untuk menghapus bengkel
+    function deletebengkel_delete(){
+        $id=$this->delete('id');
+
+        if($this->admin->deleteBengkel($id)>0){
+            $this->response([
+                'status' => true,
+                'message'=>'bengkel deleted'
+            ], REST_Controller::HTTP_OK);
+        }
+        else{
+            $this->response([
+                'status' => FALSE,
+                'message' => 'id Not Found'
+            ], REST_Controller::HTTP_NOT_FOUND); 
+        }
+    }
+
+    // fungsi untuk hapus user
+    function deleteuser_delete(){
+        $username=$this->delete('username');
+
+        if($this->admin->deleteUser($username)>0){
+            $this->response([
+                'status'=>true,
+                'message'=>'user deleted'
+            ],REST_Controller::HTTP_OK);
+        }
+        else{
+            $this->response([
+                'status' => FALSE,
+                'message' => 'user Not Found'
+            ], REST_Controller::HTTP_NOT_FOUND); 
+        }
+    }
+
+    // fungsi untuk hapus ulasan
+    function deleteulasan_delete(){
+        $id=$this->delete('id');
+
+        if($this->admin->deleteUlasan($id)>0){
+            $this->response([
+                'status' => true,
+                'message'=>'ulasan deleted'
+            ], REST_Controller::HTTP_OK);
+        }
+        else{
+            $this->response([
+                'status' => FALSE,
+                'message' => 'ulasan Not Found'
+            ], REST_Controller::HTTP_NOT_FOUND); 
+        }
+    }
+
 
 }
