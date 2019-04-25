@@ -19,7 +19,7 @@
 |update pass| PUT | /api/editprofil/password | token, lama, baru|
 |delete akun | DELETE | /api/editprofil | token|
 
-
+gagag
 
 
 
