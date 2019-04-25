@@ -2,8 +2,8 @@
 
 ## Register and Login
 
-|API | Method | Url | Data Required|
+|API    | Method| Url    | Required|
 |-------|-------|--------|---------|
-|dkjhgks|sagdas|gaga|jhkj|
+|Login  |POST   |http://localhost:8080/nebeng/api/login/|email,pass|
 
 
