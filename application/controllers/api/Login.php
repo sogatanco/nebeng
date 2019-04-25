@@ -15,7 +15,6 @@ class Login extends REST_Controller
         $this->objOfJwt=new ImplementJwt();
         $this->load->model('Login_model', 'login');
         $this->load->model('Register_model', 'user');
-        $this->load->model('Adminlogin_model', 'admin');
     }
 
     function index_post()
