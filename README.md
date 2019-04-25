@@ -3,7 +3,7 @@
 ### Public Token
 
 - token : 1234567
-- used in Register, login and public API
+- used in **Register, Login** and **Public API**
 
 ### Register and Login
 
