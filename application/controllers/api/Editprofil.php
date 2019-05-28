@@ -19,12 +19,26 @@ class EditProfil extends REST_Controller
 
     public function index_put(){
         $this->token=$this->objOfJwt->DecodeToken($this->rest->key);
+
+        $oldImage=$this->profil->getOldImage($this->token['username']);
+
+        $image=$this->put('profil');
+        $image=base64_decode($image);
+        $image_name = md5(uniqid(rand(), true));
+        $filename = $this->token['username'].$image_name.'.'.'png';
+        $path="/home/fowt6686/public_html/nebeng/asset/images/";
+        file_put_contents($path.$filename, $image);
+
+        if(file_exists($path.$oldImage)){
+           unlink($path.$oldImage);
+        }
+
         $data=[
             'us_nama'=>$this->put('nama'),
             'us_nomorhp'=>$this->put('hp'),
             'us_jk'=>$this->put('jk'),
             'us_pekerjaan'=>$this->put('pekerjaan'),
-            'us_profil'=>$this->put('profil')
+            'us_profil'=>$filename
         ];
         if($this->profil->editProfil($data,$this->token['username'])>0){
             $this->response([
@@ -40,7 +54,7 @@ class EditProfil extends REST_Controller
         }
     }
 
-    public function index_delete(){  
+    public function delete_post(){  
         $this->token=$this->objOfJwt->DecodeToken($this->rest->key);
         if($this->profil->deleteProfil($this->token['username'])>0){
             $this->response([

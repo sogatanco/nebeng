@@ -27,48 +27,73 @@ class Bengkel extends REST_Controller
         }
 
         else{
-            $data=[
-                'bk_namabengkel'=>$this->post('nama'),
-                'bk_deskripsi'=>$this->post('desc'),
-                'bk_foto'=>$this->post('foto'),
-                'bk_telpon'=>$this->post('telpon'),
-                'bk_long'=>$this->post('long'),
-                'bk_lat'=>$this->post('lat'),
-                'bk_layanan'=>$this->post('layanan'),
-                'bk_availableday'=>$this->post('day'),
-                'bk_availabletime'=>$this->post('time'),
-                'bk_pemilik'=>$token['username'],
-                'bk_kategori'=>$this->post('kategori'),
-                'bk_startdate'=>date('Y-m-d')
-            ];
-            if($this->bengkel->addBengkel($data)>0){
-                $this->response([
-                    'status' => true,
-                    'message'=>'Bengkel Added'
-                ], REST_Controller::HTTP_CREATED); 
+
+            $image=$this->post('foto');
+            $image=base64_decode($image);
+            $image_name = md5(uniqid(rand(), true));
+            $filename = 'bengkel_'.$token['username'].$image_name.'.'.'png';
+            $path="/home/fowt6686/public_html/nebeng/asset/images/";
+            if(file_put_contents($path.$filename, $image)){
+                $data=[
+                    'bk_namabengkel'=>$this->post('nama'),
+                    'bk_deskripsi'=>$this->post('desc'),
+                    'bk_foto'=>$filename,
+                    'bk_telpon'=>$this->post('telpon'),
+                    'bk_long'=>$this->post('long'),
+                    'bk_lat'=>$this->post('lat'),
+                    'bk_layanan'=>$this->post('layanan'),
+                    'bk_availabletime'=>$this->post('time'),
+                    'bk_pemilik'=>$token['username'],
+                    'bk_kategori'=>$this->post('kategori'),
+                    'bk_startdate'=>date('Y-m-d')
+                ];
+                if($this->bengkel->addBengkel($data)>0){
+                    $this->response([
+                        'status' => true,
+                        'message'=>'Bengkel Added'
+                    ], REST_Controller::HTTP_CREATED); 
+                }
+                else{
+                    $this->response([
+                        'status' => false,
+                        'message' => 'failed to add'
+                    ], REST_Controller::HTTP_BAD_REQUEST); 
+                }       
             }
             else{
                 $this->response([
                     'status' => false,
-                    'message' => 'failed to add'
+                    'message' => 'failed to upload image'
                 ], REST_Controller::HTTP_BAD_REQUEST); 
-            }   
+            }
+           
         }
           
     }
 
     public function index_put(){
         $token=$this->objOfJwt->DecodeToken($this->rest->key);
+        $oldImage=$this->bengkel->getOldImg($token['username'], $this->put('id'));
+
+        $image=$this->put('foto');
+        $image=base64_decode($image);
+        $image_name = md5(uniqid(rand(), true));
+        $filename = 'bengkel_'.$token['username'].$image_name.'.'.'png';
+        $path="/home/fowt6686/public_html/nebeng/asset/images/";
+        file_put_contents($path.$filename, $image);
+        if(file_exists($path.$oldImage)){
+            unlink($path.$oldImage);
+         }
+
 
         $data=[
             'bk_namabengkel'=>$this->put('nama'),
             'bk_deskripsi'=>$this->put('desc'),
-            'bk_foto'=>$this->put('foto'),
+            'bk_foto'=>$filename,
             'bk_telpon'=>$this->put('telpon'),
             'bk_long'=>$this->put('long'),
             'bk_lat'=>$this->put('lat'),
             'bk_layanan'=>$this->put('layanan'),
-            'bk_availableday'=>$this->put('day'),
             'bk_availabletime'=>$this->put('time'),
             'bk_kategori'=>$this->put('kategori')
         ];
@@ -91,11 +116,11 @@ class Bengkel extends REST_Controller
 
     }
 
-    public function index_delete(){
+    public function delete_post(){
         $token=$this->objOfJwt->DecodeToken($this->rest->key);
 
         $where=[
-            'bk_id'=>$this->delete('id'),
+            'bk_id'=>$this->post('id'),
             'bk_pemilik'=>$token['username']
         ];
 

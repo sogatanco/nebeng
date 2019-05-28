@@ -630,7 +630,7 @@ $config['forced_cors_headers'] = [];
 $config['0']=array('api/admin');
 
 // for user
-$config['1']=array('api/editprofil', 'api/bengkel', 'api/ulasan');
+$config['1']=array('api/editprofil', 'api/bengkel', 'api/ulasan', 'api/upload');
 
 // for public
 $config['2']=array('api/register', 'api/login', 'api/general');
