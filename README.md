@@ -5,13 +5,17 @@
 *TOKEN : 1234567*
 
 - Login and Register
+
+
 |API    | Method| Url    | Required|
 |-------|-------|--------|---------|
 |login  |POST   |/api/login/|email,pass, token|
 |admin login | POST |/api/login/admin|username,pass, token|
 |register |POST|/api/register|email, pass, token|
 
+
 - General
+
 |API    | Method| Url    | Required|
 |-------|-------|--------|---------|
 |get bengkel|GET|/api/general/bengkel|token, pemilik, kategori, id|
@@ -22,6 +26,7 @@
 *TOKEN : private*
 
 - Profil
+
 |API    | Method| Url    | Required|
 |-------|-------|--------|---------|
 |update profil| PUT | /api/editprofil |token, nama, hp, jk, pekerjaan, profil |
@@ -29,6 +34,7 @@
 |delete akun | DELETE | /api/editprofil | token|
 
 - Bengkel
+
 |API    | Method| Url    | Required|
 |-------|-------|--------|---------|
 |add bengkel|POST|/api/bengkel|token, nama, desc, foto, telpon, long, lat, layanan, day, time, kategori|
@@ -37,6 +43,7 @@
 |view bengkel|GET|/api/bengkel|token,id|
 
 - Ulasan
+
 |API    | Method| Url    | Required|
 |-------|-------|--------|---------|
 |add ulasan | POST | /api/ulasan | token, ulasan, rating, idbengkel |
