@@ -1,4 +1,9 @@
 $(document).ready(function(){
+    if(Cookies.get('login')=='true'&&Cookies.get('token')!=undefined){
+        window.location.href = "dashboard";
+    }
+   
+
     $(".js-inputWrapper").length && $(".js-inputWrapper").each(function() {
                 var $this = $(this),
                 $input = $this.find(".formRow--input"),
@@ -24,16 +29,20 @@ $(document).ready(function(){
             url: "../api/login/admin",
             data:{
                 token:"1234567",
-                username:"admin",
-                pass:"admin"
-            },
-            
+                username:$('#username').val(),
+                pass:$('#password').val()
+            },  
             success: function(response){
-                console.log(response)
+                console.log(response.token)
+                Cookies.set('login', true, { expires: 1 });
+                Cookies.set('token', response.token, { expires: 1 });
+                window.location.href = "dashboard";
             },
             error:function(err){
-                console.log(err)
+                alert("username and password not match")
             }
           });
     });
+
+    
 });

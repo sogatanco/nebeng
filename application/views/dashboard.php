@@ -60,11 +60,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     </div>
   </div>
     </div>
-
   </main>
   <!-- page-content" -->
 </div>
-    
+<script src="<?php echo base_url()?>asset/js/dashboard.js" ></script>
 </body>
 
 </html>

@@ -42,7 +42,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <a href="<?php echo base_url()?>">
               <i class="fa fa-tachometer-alt"></i>
               <span>Dashboard</span>
-              <span class="badge badge-pill badge-primary">Beta</span>
             </a>
           </li>
         
@@ -73,6 +72,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <a href="#">
               <i class="fa fa-book"></i>
               <span>Need to Review</span>
+              <span class="badge badge-pill badge-primary notification">7</span>
             </a>
         </li>
          
@@ -83,12 +83,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <!-- sidebar-content  -->
     <div class="sidebar-footer">
       <a href="#">
-        <i class="fa fa-bell"></i>
-        <span class="badge badge-pill badge-warning notification">3</span>
+        <i class="fab fa-github"></i>
+        <span class="badge-sonar"></span>
       </a>
       <a href="#">
-        <i class="fa fa-envelope"></i>
-        <span class="badge badge-pill badge-success notification">7</span>
+        <i class="fab fa-android"></i>
+       
       </a>
       <a href="#">
         <i class="fa fa-cog"></i>
