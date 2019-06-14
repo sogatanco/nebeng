@@ -22,9 +22,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         </div>
         <div class="user-info">
           <span class="user-name">Mr
-            <strong>Admin</strong>
+            <strong id="user"></strong>
           </span>
-          <span class="user-role">Administrator</span>
+          <span class="user-role" id="ip"></span>
           <span class="user-status">
             <i class="fa fa-circle"></i>
             <span>Online</span>
@@ -81,21 +81,20 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       <!-- sidebar-menu  -->
     </div>
     <!-- sidebar-content  -->
+   
     <div class="sidebar-footer">
-      <a href="#">
-        <i class="fab fa-github"></i>
-        <span class="badge-sonar"></span>
-      </a>
-      <a href="#">
+    <a href="https://github.com/sogatanco/nemu-bengkel/blob/master/app-debug.apk">
         <i class="fab fa-android"></i>
-       
-      </a>
-      <a href="#">
-        <i class="fa fa-cog"></i>
         <span class="badge-sonar"></span>
       </a>
-      <a href="#">
-        <i class="fa fa-power-off"></i>
+      <a href="https://github.com/sogatanco">
+        <i class="fab fa-github"></i>
+      </a>
+      <a href="https://www.instagram.com/sogatanco/">
+        <i class="	fab fa-instagram"></i>
+      </a>
+      <a id="logout">
+        <i class="fa fa-power-off" ></i>
       </a>
     </div>
   </nav>
