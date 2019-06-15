@@ -1,0 +1,27 @@
+.kiri{
+    background: #666666;
+    height: 100vh;
+    position: fixed;
+}
+.kanan{
+    padding: 50px;
+    margin-top: 150px;
+}
+.title{
+    letter-spacing: 5px;
+}
+.subtitle{
+    letter-spacing: 2px;
+    margin-bottom: 30px;
+}
+
+.tombol{
+    margin-top: 30px;
+}
+.caixa{ padding: 20px;border-radius: 5px;border: 1px solid rgba(0,0,0,.2);box-shadow: 0 0 20px rgba(0,0,0,.2);margin-top: 25%;background-color: #fff !important;z-index: 99;}
+.formRow { position: relative; width: 100%;border-color: transparent;padding: 0;margin: 0;}
+.formRow--item { display: block;width: 100%;}
+.formRow--input { background-color: transparent;position: relative;padding: 15px 0 11px;width: 100%;outline: none;border-bottom: 1.5px solid rgba(0,0,0,.3);border-left: transparent;border-right: transparent;border-top: transparent;letter-spacing: .2px;font-size: 16px;resize: none;-webkit-transition: all .2s ease;transition: all .2s ease;}
+.formRow--input-wrapper { position: relative;display: block;width: 100%;}
+.formRow--input-wrapper.active .placeholder { top: -5px;background-color: transparent;color: rgba(0,0,0,.5);font-size: 11px;-webkit-transform: translateY(0);transform: translateY(0);font-family: sans-serif;}
+.formRow .placeholder { position: absolute;top: 50%;left: 10px;display: block;color: rgba(0,0,0,.5);white-space: nowrap;letter-spacing: .2px;-webkit-transition: all, .2s;transition: all, .2s;-webkit-transform: translateY(-50%);transform: translateY(-50%);pointer-events: none;-webkit-user-select: none;-moz-user-select: none;-ms-user-select: none;user-select: none;font-family: sans-serif;font-size: 14px;}
