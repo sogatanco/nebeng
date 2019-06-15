@@ -23,4 +23,9 @@ class Profil_model extends CI_Model
         $this->db->update('user', ['us_password'=>$baru, 'us_token'=>$newtoken], ['us_email'=>$email]);
         return $this->db->affected_rows();
     }
+
+    public function getOldImage($email){
+        $data=$this->db->get_where('user', ['us_email'=>$email])->row();
+        return $data->us_profil;
+    }
 }

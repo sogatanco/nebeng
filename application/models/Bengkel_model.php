@@ -23,11 +23,17 @@ class Bengkel_model extends CI_Model
 
     public function getBengkel($id, $pemilik){
         if($id!=NULL){
-            return $this->db->get_where('bengkel', ['bk_pemilik'=>$pemilik, 'bk_id'=>$id])->result_array();
+            return $this->db->get_where('v_bengkel', ['bk_pemilik'=>$pemilik, 'bk_id'=>$id])->result_array();
         }
         else{
-            return $this->db->get_where('bengkel', ['bk_pemilik'=>$pemilik])->result_array();
+            $this->db->order_by('bk_id','desc');
+            return $this->db->get_where('v_bengkel', ['bk_pemilik'=>$pemilik])->result_array();
         }
+    }
+
+    public function getOldImg($username, $id){
+        $data=$this->db->get_where('v_bengkel', ['bk_pemilik'=>$username, 'bk_id'=>$id])->row();
+        return $data->bk_foto;
     }
 
 }

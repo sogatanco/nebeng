@@ -10,10 +10,11 @@ class Admin_model extends CI_Model
     public function getBengkel($id)
     {
         if($id!=NULL){
-            return $this->db->get_where('bengkel', ['bk_id'=>$id, 'bk_approved'=>0])->result_array();
+            return $this->db->get_where('v_bengkel', ['bk_id'=>$id, 'bk_approved'=>0])->result_array();
         }
         else{
-            return $this->db->get_where('bengkel', ['bk_approved'=>0])->result_array();
+            $this->db->order_by('bk_id','asc');
+            return $this->db->get_where('v_bengkel', ['bk_approved'=>0])->result_array();
         }
     }
 

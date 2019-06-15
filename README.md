@@ -1,7 +1,22 @@
 # NeBeng Rest API
 
+This is the public REST API for NEBENG, So Developers can contribute here to build other NEBENG aplication for other Platform such as for MAC OS, WINDOWS, iOS etc. 
 
-### Public User
+NEBENG (Nemu-Bengkel) is an application to find the nearest car workshop and motorcycle workshop. When your vehicle is damaged in transit, you don't know where it is closest to repairing it. Nebeng is the solution. 
+
+We have develop NEBENG for android. You can check our previous repo here https://github.com/sogatanco/nemu-bengkel
+
+## Development
+
+This Application build using Codeigniter 3.1.1 Framework
+
+## Contribution
+
+So you found a bug? Or perhaps you just want to improve something? Patches are welcome!
+
+## Usage
+
+#### Public User
 *TOKEN : 1234567*
 
 - Login and Register
@@ -22,7 +37,7 @@
 |get user | GET |/api/general/user | token, email|
 |get ulasan | GET |/api/general/ulasan |token, idbengkel|
 
-### Registered User (Pemilik Bengkel)
+#### Registered User (Pemilik Bengkel)
 *TOKEN : private*
 
 - Profil
@@ -50,7 +65,7 @@
 |delete ulasan | DELETE | /api/ulasan | token, id |
 
 
-### Admin
+#### Admin
 
 *TOKEN : private*
 

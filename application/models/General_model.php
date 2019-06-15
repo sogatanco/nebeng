@@ -3,16 +3,19 @@ class General_model extends CI_Model
 {
     public function getBengkel($id, $pemilik, $kategori){
         if ($id!=NULL){
-            return $this->db->get_where('bengkel', ['bk_id'=>$id, 'bk_approved'=>1])->result_array();
+            return $this->db->get_where('v_bengkel', ['bk_id'=>$id])->result_array();
         }
         elseif($pemilik!=NULL){
-            return $this->db->get_where('bengkel', ['bk_pemilik'=>$pemilik, 'bk_approved'=>1])->result_array();
+            $this->db->order_by('bk_id','desc');
+            return $this->db->get_where('v_bengkel', ['bk_pemilik'=>$pemilik, 'bk_approved'=>1])->result_array();
         }
         elseif($kategori!=NULL){
-            return $this->db->get_where('bengkel', ['bk_kategori'=>$kategori, 'bk_approved'=>1])->result_array();
+            $this->db->order_by('bk_id','desc');
+            return $this->db->get_where('v_bengkel', ['bk_kategori'=>$kategori, 'bk_approved'=>1])->result_array();
         }
         else{
-            return $this->db->get_where('bengkel', ['bk_approved'=>1])->result_array();
+            $this->db->order_by('bk_id','desc');
+            return $this->db->get_where('v_bengkel', ['bk_approved'=>1])->result_array();
         }
     }
 
