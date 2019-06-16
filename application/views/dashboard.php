@@ -74,9 +74,19 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <h5 class="text-muted judul">Popular Location</h5>
         <br>
         <div id="popular">
-          
+          <!-- popolar list here -->
         </div>
       <small>sort by rating</small>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="card-counter baris2">
+        <h5 class="text-muted judul">Detail on chart</h5>
+      
+        <canvas id="canvas" height="100px"></canvas>
       </div>
     </div>
   </div>

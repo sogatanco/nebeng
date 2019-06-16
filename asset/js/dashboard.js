@@ -200,8 +200,14 @@ function initMap() {
                     var marker = new google.maps.Marker({
                         position:new google.maps.LatLng(response.data[i].bk_lat,response.data[i].bk_long),
                         map: map,
-                        title:'gs',
+                        title:'map',
                         icon:'../asset/images/markermobil.png'
+                    });
+                    var infowindow = new google.maps.InfoWindow({
+                      content: response.data[i].bk_namabengkel
+                    });
+                    marker.addListener('click', function() {
+                      infowindow.open(map, marker);
                     });
                 }
             }
@@ -238,18 +244,20 @@ $.ajax({
     for(i=0;i<4;i++){
       // count rating
       rating=popular[i].total_rating/popular[i].j_ulasan
+      rating = rating || 0
       $("#popular").append(`
         <div class="row popularpost">
-          <div class="col-sm-6 nbengkel">
+          <div class="col-6 nbengkel">
             <strong>`+popular[i].bk_namabengkel+`</strong>
           </div>
-          <div class="col-sm-6 text-center">
+          <div class="col-6 text-center">
             <div class="rating`+i+`"></div>
             <small class="text-muted">`+rating+` / `+popular[i].j_ulasan+` ulasan</small>
           </div>
         </div> 
       `);
       // show rating
+      console.log(rating)
       for(j=0;j<rating.toFixed(0);j++){
         
         $(".rating"+i).append(`
@@ -264,6 +272,43 @@ $.ajax({
       }
     }
   }
+});
+
+// showing chart
+var ctx = document.getElementById('canvas');
+var myChart = new Chart(ctx, {
+    type: 'line',
+    data: {
+        labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+        datasets: [
+        {
+            label: 'Bengkel Motor',
+            borderColor: 'red',
+            borderCapStyle: 'square',
+            data: [12, 19, 3, 5, 2, 3],
+            borderWidth: 2
+        },
+        {
+            label: 'Bengkel Mobil',
+            borderCapStyle: 'square',
+            borderColor:'#ee00e2',
+            data: [1, 19, 3, 6, 1, 3],
+            borderWidth: 2
+        }
+      ],
+        
+
+    },
+    options: {
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero: true,
+                    maxTicksLimit:5
+                }
+            }]
+        }
+    }
 });
 
 

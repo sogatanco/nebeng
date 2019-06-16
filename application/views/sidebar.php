@@ -39,7 +39,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <span>Menu </span>
           </li>
           <li>
-            <a href="<?php echo base_url()?>">
+            <a href="<?php echo base_url()?>admin/dashboard">
               <i class="fa fa-tachometer-alt"></i>
               <span>Dashboard</span>
             </a>
