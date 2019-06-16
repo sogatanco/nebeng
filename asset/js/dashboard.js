@@ -197,8 +197,6 @@ function initMap() {
             success: function(response){
                 $("#jmobil").html(response.data.length);
                 for(i=0;i<response.data.length;i++){
-                    console.log(response.data[i].bk_long)
-                    console.log(response.data[i].bk_lat)
                     var marker = new google.maps.Marker({
                         position:new google.maps.LatLng(response.data[i].bk_lat,response.data[i].bk_long),
                         map: map,
@@ -215,8 +213,6 @@ function initMap() {
             success: function(response){
                 $("#jmotor").html(response.data.length);
                 for(i=0;i<response.data.length;i++){
-                    console.log(response.data[i].bk_long)
-                    console.log(response.data[i].bk_lat)
                     var marker = new google.maps.Marker({
                         position:new google.maps.LatLng(response.data[i].bk_lat,response.data[i].bk_long),
                         map: map,
@@ -226,7 +222,6 @@ function initMap() {
                 }
             }
         });
-
   }
 
 
@@ -248,6 +243,20 @@ var chart = new Chart(ctx, {
     options: {
         
     }
+});
+
+// showing the popular post
+$.ajax({
+  type:"get",
+  url:"../api/general/bengkel?token=1234567",
+  success:function(response){
+    console.log(response.data)
+    popular=response.data.sort(function(a,b){
+        return   (b.total_rating/b.j_ulasan) - (a.total_rating/b.j_ulasan);
+    });
+    console.log(popular)
+
+  }
 });
 
 });
