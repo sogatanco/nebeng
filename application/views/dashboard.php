@@ -71,10 +71,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     </div>
     <div class="col-md-4">
       <div class="card-counter">
-      <h5 class="text-muted judul">Popular Location</h5>
-      <br>
-  
-      <canvas id="myChart" height="350px"></canvas>
+        <h5 class="text-muted judul">Popular Location</h5>
+        <br>
+        <div id="popular">
+          
+        </div>
+      <small>sort by rating</small>
       </div>
     </div>
   </div>

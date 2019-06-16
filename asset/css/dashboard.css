@@ -68,3 +68,21 @@
     letter-spacing: 2px;
   }
 
+  #popular{
+    height: 310px;
+    width: 100%;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .popularpost{
+    padding-top: 15px;
+    border-top:#BDBDBD 1px solid;
+    margin-bottom: 15px;
+  }
+
+  .nbengkel{
+    margin-top: auto;
+margin-bottom: auto;
+  }
+
