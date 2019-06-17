@@ -1,5 +1,56 @@
 $(document).ready(function(){
 
+  // showing chart
+var ctx = document.getElementById('canvas');
+var myChart = new Chart(ctx, {
+    type: 'line',
+    data: {
+        labels: [],
+        datasets: [
+        {
+            label: 'Bengkel Motor',
+            borderColor: 'red',
+            borderCapStyle: 'square',
+            data: [],
+            borderWidth: 2
+        },
+        {
+            label: 'Bengkel Mobil',
+            borderCapStyle: 'square',
+            borderColor:'#ee00e2',
+            data: [],
+            borderWidth: 2
+        }
+      ],
+        
+
+    },
+    options: {
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero: true,
+                    maxTicksLimit:5
+                }
+            }]
+        }
+    }
+});
+// get month name
+var month = new Array();
+  month[0] = "January";
+  month[1] = "February";
+  month[2] = "March";
+  month[3] = "April";
+  month[4] = "May";
+  month[5] = "June";
+  month[6] = "July";
+  month[7] = "August";
+  month[8] = "September";
+  month[9] = "October";
+  month[10] = "November";
+  month[11] = "December";
+
 
 
 // user
@@ -197,19 +248,28 @@ function initMap() {
             success: function(response){
                 $("#jmobil").html(response.data.length);
                 for(i=0;i<response.data.length;i++){
+                  // get markers for kategori 2
                     var marker = new google.maps.Marker({
                         position:new google.maps.LatLng(response.data[i].bk_lat,response.data[i].bk_long),
                         map: map,
                         title:'map',
                         icon:'../asset/images/markermobil.png'
                     });
-                    var infowindow = new google.maps.InfoWindow({
-                      content: response.data[i].bk_namabengkel
-                    });
-                    marker.addListener('click', function() {
-                      infowindow.open(map, marker);
-                    });
+                // get data for chart js
+                d=new Date()
+                for(i=d.getMonth()+1;i<12;i++){
+                  myChart.data.datasets[1].data.push(response.data.filter(function(j,n){
+                    return(j.bk_startdate.substr(0,7)==d.getFullYear()-1+'-'+("0" + (i+1)).slice(-2))
+                  }).length) 
                 }
+                for(i=0;i<=d.getMonth();i++){
+                  myChart.data.datasets[1].data.push(response.data.filter(function(j,n){
+                    return(j.bk_startdate.substr(0,7)==d.getFullYear()+'-'+("0" + (i+1)).slice(-2))
+                  }).length) 
+                }
+                myChart.update()  
+                }
+
             }
         });
 
@@ -219,13 +279,30 @@ function initMap() {
             success: function(response){
                 $("#jmotor").html(response.data.length);
                 for(i=0;i<response.data.length;i++){
+                  // get latitute and longitude for marker for kategori 1
                     var marker = new google.maps.Marker({
                         position:new google.maps.LatLng(response.data[i].bk_lat,response.data[i].bk_long),
                         map: map,
                         title:'gs',
                         icon:'../asset/images/markermotor.png'
-                    });
+                    }); 
+                      
                 }
+                // get data for chart js
+                d=new Date()
+                for(i=d.getMonth()+1;i<12;i++){
+                  myChart.data.labels.push(month[i]+' '+(d.getFullYear()-1))
+                  myChart.data.datasets[0].data.push(response.data.filter(function(j,n){
+                    return(j.bk_startdate.substr(0,7)==d.getFullYear()-1+'-'+("0" + (i+1)).slice(-2))
+                  }).length) 
+                }
+                for(i=0;i<=d.getMonth();i++){
+                  myChart.data.labels.push(month[i]+' '+d.getFullYear())
+                  myChart.data.datasets[0].data.push(response.data.filter(function(j,n){
+                    return(j.bk_startdate.substr(0,7)==d.getFullYear()+'-'+("0" + (i+1)).slice(-2))
+                  }).length) 
+                }
+                myChart.update()
             }
         });
   }
@@ -257,7 +334,6 @@ $.ajax({
         </div> 
       `);
       // show rating
-      console.log(rating)
       for(j=0;j<rating.toFixed(0);j++){
         
         $(".rating"+i).append(`
@@ -272,43 +348,6 @@ $.ajax({
       }
     }
   }
-});
-
-// showing chart
-var ctx = document.getElementById('canvas');
-var myChart = new Chart(ctx, {
-    type: 'line',
-    data: {
-        labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-        datasets: [
-        {
-            label: 'Bengkel Motor',
-            borderColor: 'red',
-            borderCapStyle: 'square',
-            data: [12, 19, 3, 5, 2, 3],
-            borderWidth: 2
-        },
-        {
-            label: 'Bengkel Mobil',
-            borderCapStyle: 'square',
-            borderColor:'#ee00e2',
-            data: [1, 19, 3, 6, 1, 3],
-            borderWidth: 2
-        }
-      ],
-        
-
-    },
-    options: {
-        scales: {
-            yAxes: [{
-                ticks: {
-                    beginAtZero: true,
-                    maxTicksLimit:5
-                }
-            }]
-        }
-    }
 });
 
 
