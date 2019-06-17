@@ -256,6 +256,19 @@ function initMap() {
                         title:'map',
                         icon:'../asset/images/markermobil.png'
                     });
+
+                    // add info window on marker
+                    var infowindow = new google.maps.InfoWindow({
+                      maxWidth: 160
+                    });
+                    google.maps.event.addListener(marker, 'click', (function(marker, i) {
+                      return function() {
+                        var contentString = response.data[i].bk_namabengkel;
+                        infowindow.setContent(contentString);
+                        infowindow.open(map, marker);
+                      }
+                    })(marker, i));
+                }
                 // get data for chart js
                 d=new Date()
                 for(i=d.getMonth()+1;i<12;i++){
@@ -271,7 +284,7 @@ function initMap() {
                 myChart.update()  
                 }
 
-            }
+            
         });
 
         $.ajax({
@@ -287,8 +300,20 @@ function initMap() {
                         title:'gs',
                         icon:'../asset/images/markermotor.png'
                     }); 
-                      
+                    // add info window on marker
+                    var infowindow = new google.maps.InfoWindow({
+                      maxWidth: 160
+                    });
+                    google.maps.event.addListener(marker, 'click', (function(marker, i) {
+                      return function() {
+                        var contentString = response.data[i].bk_namabengkel;
+                        infowindow.setContent(contentString);
+                        infowindow.open(map, marker);
+                      }
+                    })(marker, i));
+
                 }
+              
                 // get data for chart js
                 d=new Date()
                 for(i=d.getMonth()+1;i<12;i++){
