@@ -53,10 +53,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <div class="sidebar-submenu">
               <ul>
                 <li>
-                  <a href="#">Mobil</a>
+                  <a href="<?php echo base_url()?>admin/view/bengkel/mobil">Mobil</a>
                 </li>
                 <li>
-                  <a href="#">Motor</a>
+                  <a href="<?php echo base_url()?>admin/view/bengkel/motor">Motor</a>
                 </li>
               </ul>
             </div>

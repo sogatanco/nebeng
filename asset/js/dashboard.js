@@ -343,7 +343,7 @@ $.ajax({
     popular=response.data.sort(function(a,b){
         return b.j_ulasan - a.j_ulasan;
     });
-    console.log(popular)
+    // console.log(popular)
     for(i=0;i<4;i++){
       // count rating
       rating=popular[i].total_rating/popular[i].j_ulasan

@@ -8,7 +8,7 @@ class Dashboard extends CI_Controller {
             redirect('admin/login');
         }
         else if(get_cookie('login')!=true){
-            echo get_cookie('token');
+            redirect('admin/login');
         } 
      } 
 

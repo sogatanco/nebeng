@@ -1,6 +1,7 @@
 .card-view{
     box-shadow: 2px 2px 10px #DADADA;
-    margin: 5px;
+    margin-bottom: 25px;
+    
     background-color: #fff;
     transition: .3s linear all;
   }
