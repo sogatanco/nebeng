@@ -30,6 +30,7 @@ var myChart = new Chart(ctx, {
             yAxes: [{
                 ticks: {
                     beginAtZero: true,
+                    stepSize: 2,
                     maxTicksLimit:5
                 }
             }]

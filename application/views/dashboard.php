@@ -87,6 +87,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <h5 class="text-muted judul">Detail on chart</h5>
       
         <canvas id="canvas" height="100px"></canvas>
+        <small>number of bengkel added per month</small>
       </div>
     </div>
   </div>
