@@ -1,8 +1,8 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Dashboard extends CI_Controller {
-	function __construct() { 
+class View extends CI_Controller {
+    function __construct() { 
         parent::__construct();
         if(!get_cookie('token')&& !get_cookie('login')){
             redirect('admin/login');
@@ -12,9 +12,8 @@ class Dashboard extends CI_Controller {
         } 
      } 
 
-	
-	public function index()
-	{
-		$this->load->view('dashboard');
+	public function bengkel($kategori)
+	{ 
+		$this->load->view($kategori);
 	}
 }

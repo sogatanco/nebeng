@@ -1,0 +1,24 @@
+.card-view{
+    box-shadow: 2px 2px 10px #DADADA;
+    margin: 5px;
+    background-color: #fff;
+    transition: .3s linear all;
+  }
+
+  .card-view:hover{
+    box-shadow: 4px 4px 20px #DADADA;
+    transition: .3s linear all;
+  }
+
+  .gambar{
+      height: 120px;
+      width: 100%;
+  }
+  
+  .content{
+      padding: 7px !important;
+  }
+
+  .title{
+      letter-spacing: 2px;
+  }

@@ -1,8 +1,6 @@
 $(function() {
 // cek cookies
-  if(Cookies.get('login')!='true'&&Cookies.get('token')==undefined){
-    window.location.href = "login";
-  }
+
  
     $(".sidebar-dropdown > a").click(function() {
   $(".sidebar-submenu").slideUp(200);

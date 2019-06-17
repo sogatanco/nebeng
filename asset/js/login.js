@@ -1,9 +1,5 @@
 $(document).ready(function(){
-    if(Cookies.get('login')=='true'&&Cookies.get('token')!=undefined){
-        window.location.href = "dashboard";
-    }
    
-
     $(".js-inputWrapper").length && $(".js-inputWrapper").each(function() {
                 var $this = $(this),
                 $input = $this.find(".formRow--input"),

@@ -23,7 +23,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <?php $this->load->view('sidebar') ?>
   <!-- sidebar-wrapper  -->
   <main class="page-content">
-    <div class="container-fluid">
+    <div class="container">
       <h4>Dashboard</h4>
       <hr>
     <div class="row">
