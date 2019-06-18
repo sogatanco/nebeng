@@ -30,6 +30,9 @@
       <div class="modal-content">
         <div id="map"></div>
         <!-- in Jquery -->
+        <div id="detailbengkel">
+            <h4 id="judul"></h4>
+        </div>
       </div>
     </div>
   </div>

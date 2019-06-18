@@ -33,6 +33,10 @@
     box-shadow: 4px 7px;
 }
 #map{
-    height: 330px;
+    height: 400px;
     width: 100%;
   }
+
+#detailbengkel{
+    padding: 30px;
+}
