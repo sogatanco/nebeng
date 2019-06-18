@@ -31,7 +31,14 @@
         <div id="map"></div>
         <!-- in Jquery -->
         <div id="detailbengkel">
-            <h4 id="judul"></h4>
+            <h3 id="judul"></h3>
+            <p class="text-muted" id="attribute"></p>
+            <hr>
+            <p class="text-justify" id="deskripsi"></p>
+            <p class="text-justify" id="layanan"></p>
+            <br>
+            <br>
+            <hr>
         </div>
       </div>
     </div>

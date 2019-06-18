@@ -38,5 +38,12 @@
   }
 
 #detailbengkel{
-    padding: 30px;
+    padding: 50px;
+}
+
+#judul{
+    letter-spacing: 3px;
+}
+#attribute{
+    letter-spacing: 3px !important;
 }
