@@ -4,8 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link href="<?php echo base_url()?>asset/css/bengkel.css" rel="stylesheet">
+    <link href="<?php echo base_url()?>asset/css/bengkel.css" rel="stylesheet">  
     <?php $this->load->view('src') ?>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyALisurDb7RVJUKs2Es67Tw2jQL55LoClw"></script>
     <title>Nebeng-Admin | Unapprove Bengkel </title>
 </head>
 <body>
@@ -14,8 +15,8 @@
     <?php $this->load->view('sidebar') ?>
 
     <main class="page-content">
-
         <div class="container">
+
             <h4>Unapprove Bengkel</h4>
             <hr>
 
@@ -23,8 +24,18 @@
                 <!-- data from js -->
             </div>
 
-        </div>
+  <!-- The Modal -->
+  <div class="modal fade" id="myModal">
+    <div class="modal-dialog modal-lg" >
+      <div class="modal-content">
+        <div id="map"></div>
+        <!-- in Jquery -->
+      </div>
+    </div>
+  </div>
 
+
+        </div>
     </main>
 
 </div>

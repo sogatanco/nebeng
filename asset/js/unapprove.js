@@ -5,6 +5,7 @@ $(document).ready(function(){
         success: function(response){
             $(".junapprove").html(response.data.length);
             popular=response.data;
+            console.log(popular)
             for(i=0;i<popular.length;i++){
                 judul=popular[i].bk_namabengkel;
                 deskripsi=popular[i].bk_deskripsi;
@@ -23,7 +24,7 @@ $(document).ready(function(){
                 }
                 $("#content").append(`
                 <div class="col-sm-4">
-                    <div class="card-view">
+                    <div class="card-view" data-toggle="modal" data-target="#myModal" data-id="`+popular[i].bk_id+`">
                         <div class="row">
                             <div class="col-6">
                                 <img src="../../asset/images/`+popular[i].bk_foto+`" class="gambar">
@@ -44,4 +45,10 @@ $(document).ready(function(){
         }
     });
 
+
+// get data when opened modal
+    $('#content').on( "click",".card-view", function() {
+        console.log($(this).data('id'))
+    });
+  
 });
