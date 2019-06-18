@@ -15,5 +15,10 @@ class View extends CI_Controller {
 	public function bengkel($kategori)
 	{ 
 		$this->load->view($kategori);
-	}
+    }
+    
+    public function unapprove()
+    {
+        $this->load->view('unapprove');
+    }
 }

@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="<?php echo base_url()?>asset/css/bengkel.css" rel="stylesheet">
     <?php $this->load->view('src') ?>
-    <title>Nebeng-Admin | Bengkel Mobil </title>
+    <title>Nebeng-Admin | Unapprove Bengkel </title>
 </head>
 <body>
 <div class="page-wrapper chiller-theme toggled">
@@ -16,7 +16,7 @@
     <main class="page-content">
 
         <div class="container">
-            <h4>Bengkel Mobil</h4>
+            <h4>Unapprove Bengkel</h4>
             <hr>
 
             <div class="row" id="content">
@@ -28,6 +28,6 @@
     </main>
 
 </div>
-<script src="<?php echo base_url()?>asset/js/mobil.js" ></script>
+<script src="<?php echo base_url()?>asset/js/unapprove.js" ></script>
 </body>
 </html>

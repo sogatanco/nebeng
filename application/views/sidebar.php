@@ -62,14 +62,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             </div>
           </li>
           <li>
-            <a href="#">
+            <a href="<?php echo base_url()?>admin/view/bengkel/users">
               <i class="fa fa-book"></i>
               <span>Users</span>
             </a>
         </li>
          
         <li>
-            <a href="#">
+            <a href="<?php echo base_url()?>admin/view/unapprove">
               <i class="fa fa-book"></i>
               <span>Need to Review</span>
               <span class="badge badge-pill badge-primary notification junapprove" >0</span>
