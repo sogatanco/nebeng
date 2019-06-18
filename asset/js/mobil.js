@@ -33,7 +33,7 @@ $(document).ready(function(){
                             <div class="col-6 content">
                             <strong class="title">`+judul.substring(0,14)+`</strong>
                                 <small class="text-muted">
-                                    <p><span class="badge badge-pill badge-warning notification junapprove" >`+rating+` </span>  `+popular[i].j_ulasan+` ulasan | `+kategori+`</p>
+                                    <p><span class="badge badge-pill badge-warning notification" >`+rating+` </span>  `+popular[i].j_ulasan+` ulasan | `+kategori+`</p>
                                     <p>`+deskripsi.substring(0,35)+`...</p>
                                 </small> 
                             </div>
@@ -43,6 +43,15 @@ $(document).ready(function(){
                 </div>
                 `);
             }
+        }
+    });
+
+     // unapprove
+     $.ajax({
+        type:"get",
+        url:"../../../api/admin/viewbengkel?token="+Cookies.get("token"),
+        success: function(response){
+            $(".junapprove").html(response.data.length);
         }
     });
 });

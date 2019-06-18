@@ -28,6 +28,6 @@
     </main>
 
 </div>
-<script src="<?php echo base_url()?>asset/js/mobil.js" ></script>
+<script src="<?php echo base_url()?>asset/js/motor.js" ></script>
 </body>
 </html>
