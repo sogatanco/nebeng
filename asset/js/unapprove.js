@@ -49,10 +49,29 @@ $(document).ready(function(){
 // get data when opened modal
     $('#content').on( "click",".card-view", function() {
         initialize(new google.maps.LatLng($(this).data('lat'), $(this).data('long')));
-        $('#judul').html(ca($(this).data('judul')))
-        $('#attribute').html(`<span class="badge badge-pill badge-warning notification" >`+$(this).data('rating')+`</span> `+$(this).data('ulasan')+` ulasan | `+$(this).data('kategori'))
-        $("#deskripsi").html($(this).data('desk')+`.`)
-        $("#layanan").html(`Bengkel ini ditambahkan oleh <b>`+$(this).data('pemilik')+ `</b> sejak `+$(this).data('tanggal')+ `. Adapun layanan yang bisa didapatkan di sini antara lain :` +$(this).data('lay')+` dengan waktu pengoprasian mulai dari ` +$(this).data('waktu')+` WIB. Untuk informasi lebih lanjut silakan menghubungi langsung `+$(this).data('tlp')+`.`)
+        $('#judul').html(ca($(this).data('judul')));
+        $('#attribute').html(`<span class="badge badge-pill badge-warning notification" >`+$(this).data('rating')+`</span> `+$(this).data('ulasan')+` ulasan | `+$(this).data('kategori'));
+        $("#deskripsi").html($(this).data('desk')+`.`);
+        $("#layanan").html(`Bengkel ini ditambahkan oleh <b>`+$(this).data('pemilik')+ `</b> sejak `+$(this).data('tanggal')+ `. Adapun layanan yang bisa didapatkan di sini antara lain :` +$(this).data('lay')+` dengan waktu pengoprasian mulai dari ` +$(this).data('waktu')+` WIB. Untuk informasi lebih lanjut silakan menghubungi langsung `+$(this).data('tlp')+`.`);
+        $.ajax({
+            type:"get",
+            url:"../../api/general/ulasan?token=1234567&idbengkel="+$(this).data('id'),
+            success:function(respon){
+                $('#komentars').html('');
+                $.each(respon.data,  function(i,d){
+                    bintang=parseFloat(d.ul_rating)
+                    bintang=bintang.toFixed(1)
+                    $('#komentars').append(`
+                    <p><b>`+d.ul_user+`</b><br><small class="text-muted">Rated  <span class="badge badge-pill badge-info notification" >  `+bintang+`</span> | `+prettyDate(d.ul_time)+` </small><br>`+d.ul_ulasan+`<br></p>
+                    `)
+                })
+                console.log(respon.data)
+            },
+            error:function(error){
+                $('#komentars').html(`<p>Maaf belum ada data</p>`)
+            }
+            
+        });
         console.log($(this).data('id'))
 
     });
@@ -71,10 +90,30 @@ $(document).ready(function(){
         marker.setMap(map);
     };
 
+    // uppercase in first strring
     function ca(string) {
         return string.charAt(0).toUpperCase() + string.slice(1);
     }
 
+    // convert date to pretty 
+    function prettyDate(time){
+        var date = new Date((time || "").replace(/-/g,"/").replace(/[TZ]/g," ")),
+            diff = (((new Date()).getTime() - date.getTime()) / 1000),
+            day_diff = Math.floor(diff / 86400);
+                
+        if ( isNaN(day_diff) || day_diff < 0 || day_diff >= 31 )
+            return;       
+        return day_diff == 0 && (
+                diff < 60 && "just now" ||
+                diff < 120 && "1 minute ago" ||
+                diff < 3600 && Math.floor( diff / 60 ) + " minutes ago" ||
+                diff < 7200 && "1 hour ago" ||
+                diff < 86400 && Math.floor( diff / 3600 ) + " hours ago") ||
+            day_diff == 1 && "Yesterday" ||
+            day_diff < 7 && day_diff + " days ago" ||
+            day_diff < 31 && Math.ceil( day_diff / 7 ) + " weeks ago";
+    }
+    
     
   
 });

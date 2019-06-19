@@ -31,14 +31,28 @@
         <div id="map"></div>
         <!-- in Jquery -->
         <div id="detailbengkel">
-            <h3 id="judul"></h3>
-            <p class="text-muted" id="attribute"></p>
+            <div class="row">
+                <div class="col-8">
+                    <h3 id="judul" class="judul"></h3>
+                    <p class="text-muted" id="attribute"></p>
+                </div>
+                <div class="col-4">
+                    <div class="float-right">
+                    <button type="button" class="btn btn-danger"><i class='fas fa-trash-alt'></i></button>
+                    <button type="button" class="btn btn-success"><i class='fas fa-check-circle'></i></button>
+                    </div>    
+                </div>
+            </div>
+            
             <hr>
             <p class="text-justify" id="deskripsi"></p>
             <p class="text-justify" id="layanan"></p>
             <br>
-            <br>
-            <hr>
+            <h5 class="judul">Ulasan</h5>
+                <hr>
+            <div id="komentars">
+                
+            </div>
         </div>
       </div>
     </div>
