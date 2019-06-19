@@ -37,9 +37,9 @@
                     <p class="text-muted" id="attribute"></p>
                 </div>
                 <div class="col-4">
-                    <div class="float-right">
-                    <button type="button" class="btn btn-danger"><i class='fas fa-trash-alt'></i></button>
-                    <button type="button" class="btn btn-success"><i class='fas fa-check-circle'></i></button>
+                    <div class="float-right" id="tombol">
+                        <div class="terima"></div>
+                        <div class="delete"></div>
                     </div>    
                 </div>
             </div>
@@ -51,7 +51,7 @@
             <h5 class="judul">Ulasan</h5>
                 <hr>
             <div id="komentars">
-                
+                     <!--  data from jquery-->
             </div>
         </div>
       </div>

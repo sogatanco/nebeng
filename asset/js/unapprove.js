@@ -50,6 +50,10 @@ $(document).ready(function(){
     $('#content').on( "click",".card-view", function() {
         initialize(new google.maps.LatLng($(this).data('lat'), $(this).data('long')));
         $('#judul').html(ca($(this).data('judul')));
+        $('#tombol').html(`
+        <button type="button" class="btn btn-danger" id="delete" data-idbengkel="`+$(this).data('id')+`"><i class='fas fa-trash-alt'></i></button>
+        <button type="button" class="btn btn-success" id="terima" data-idbengkel="`+$(this).data('id')+`"><i class='fas fa-check'></i></button>
+        `)
         $('#attribute').html(`<span class="badge badge-pill badge-warning notification" >`+$(this).data('rating')+`</span> `+$(this).data('ulasan')+` ulasan | `+$(this).data('kategori'));
         $("#deskripsi").html($(this).data('desk')+`.`);
         $("#layanan").html(`Bengkel ini ditambahkan oleh <b>`+$(this).data('pemilik')+ `</b> sejak `+$(this).data('tanggal')+ `. Adapun layanan yang bisa didapatkan di sini antara lain :` +$(this).data('lay')+` dengan waktu pengoprasian mulai dari ` +$(this).data('waktu')+` WIB. Untuk informasi lebih lanjut silakan menghubungi langsung `+$(this).data('tlp')+`.`);
@@ -62,7 +66,7 @@ $(document).ready(function(){
                     bintang=parseFloat(d.ul_rating)
                     bintang=bintang.toFixed(1)
                     $('#komentars').append(`
-                    <p><b>`+d.ul_user+`</b><br><small class="text-muted">Rated  <span class="badge badge-pill badge-info notification" >  `+bintang+`</span> | `+prettyDate(d.ul_time)+` </small><br>`+d.ul_ulasan+`<br></p>
+                    <p><b>`+d.ul_user+`</b><br><small class="text-muted">Rated  <span class="badge badge-pill badge-info notification" >  `+bintang+`</span> | `+prettyDate(d.ul_time)+` </small><br>`+d.ul_ulasan+`</p>
                     `)
                 })
                 console.log(respon.data)
@@ -72,8 +76,16 @@ $(document).ready(function(){
             }
             
         });
-        console.log($(this).data('id'))
+        
+    });
 
+    $('#myModal').on('shown.bs.modal', function(e) {
+        $("#delete").click(function(){
+            alert("delete bengkel with: "+$(this).data('idbengkel'))
+        })
+        $("#terima").click(function(){
+            alert("approve bengkel with: "+$(this).data('idbengkel'))
+        })
     });
 
 // initialize map
