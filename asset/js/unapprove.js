@@ -88,7 +88,26 @@ $(document).ready(function(){
 
     $('#myModal').on('shown.bs.modal', function(e) {
         $("#delete").click(function(){
-            alert("delete bengkel with: "+$(this).data('idbengkel'))
+            var conf=confirm("Are you sure to Delete it ?");
+            if(conf==true){
+                console.log($(this).data('idbengkel'))
+                $.ajax({
+                    type:"DELETE",
+                    url:"../../api/admin/deletebengkel",
+                    data:{
+                        token:Cookies.get('token'),
+                        id:$(this).data('idbengkel')
+                    },
+                    success:function(res){
+                        alert("Deleted")
+                        $("#myModal").modal("toggle");
+                        getContent()
+                    },
+                    error:function(err){
+                        alert("failed to delete")
+                    }
+                })
+            }
         })
         $("#terima").click(function(){
             var conf=confirm("Are you sure to Approve ?");
@@ -101,9 +120,9 @@ $(document).ready(function(){
                         idbengkel:$(this).data('idbengkel')
                     },
                     success:function(response){
-                        getContent()
                         alert("approved")
                         $("#myModal").modal("toggle");
+                        getContent()
                     },
                     error:function(err){
                         alert("approve failed")
