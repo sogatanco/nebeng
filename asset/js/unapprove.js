@@ -19,7 +19,7 @@ $(document).ready(function(){
                         deskripsi="Description";
                     }
                     kategori=popular[i].bk_kategori;
-                    if(kategori=1){
+                    if(kategori=="1"){
                         kategori="<span class='fas fa-motorcycle text-danger'></span> Motor";
                     }
                     else{
