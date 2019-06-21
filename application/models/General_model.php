@@ -22,7 +22,7 @@ class General_model extends CI_Model
 
     public function getUser($email){
         
-        $this->db->select('us_email, us_nama, us_nomorhp, us_jk, us_pekerjaan, us_profil');
+        $this->db->select('us_email, us_nama, us_nomorhp, us_jk, us_pekerjaan, us_profil, us_gabung');
         $this->db->from('user');
         $this->db->where('us_level', 1);
         if($email!=NULL){
