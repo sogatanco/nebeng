@@ -21,4 +21,9 @@ class View extends CI_Controller {
     {
         $this->load->view('unapprove');
     }
+
+    public function user()
+    {
+        $this->load->view('users');
+    }
 }

@@ -26,7 +26,7 @@
                         <div class="card-view">
                             <div class="row">
                                 <div class="col-3 ">
-                                    <img src="../../../asset/images/logo.png" class="rounded-circle img-thumbnail float-right" id="profil">
+                                    <img src="../../asset/images/logo.png" class="rounded-circle img-thumbnail float-right" id="profil">
                                 </div>
                                 <div class="col-7">
                                    <strong>Muhammad</strong><br>
