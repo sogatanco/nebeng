@@ -62,7 +62,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             </div>
           </li>
           <li>
-            <a href="<?php echo base_url()?>admin/view/bengkel/users">
+            <a href="<?php echo base_url()?>admin/view/user">
               <i class="fa fa-book"></i>
               <span>Users</span>
             </a>
