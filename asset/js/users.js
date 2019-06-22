@@ -2,6 +2,7 @@ $(document).ready(function(){
     getUser();
 
     function getUser(){
+        $("#content").html("")
         $.ajax({
             type:'get',
             url:'../../api/general/user?token=1234567',
@@ -68,7 +69,27 @@ $(document).ready(function(){
         })
     }
 
-  
+    $("#content").on("click","#hapus", function(){
+        var conf=confirm("Are you sure to Delete it ?");
+            if(conf==true){  
+                console.log($(this).data("email"))
+                $.ajax({
+                    type:"DELETE",
+                    url:"../../api/admin/deleteuser",
+                    data:{
+                        token:Cookies.get('token'),
+                        username:$(this).data("email")
+                    },
+                    success:function(res){
+                        alert("Deleted")
+                        getUser()
+                    },
+                    error:function(err){
+                        alert("failed to delete")
+                    }
+                })
+            }
+    })
 
 // change null to unknown
     function ifUnknown(thedata){

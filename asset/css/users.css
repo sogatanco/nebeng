@@ -28,5 +28,8 @@
   .pd{
     border-right: 1px solid #E4E4E4;
   }
+  #hapus{
+    cursor: pointer;
+  }
 
   
