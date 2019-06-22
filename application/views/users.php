@@ -21,35 +21,6 @@
             <hr>
 
             <div class="row" id="content">
-                
-                    <div class="col-sm-4">
-                        <div class="card-view">
-                            <div class="row">
-                                <div class="col-3 ">
-                                    <img src="../../asset/images/logo.png" class="rounded-circle img-thumbnail float-right" id="profil">
-                                </div>
-                                <div class="col-7">
-                                   <strong>Muhammad</strong><br>
-                                   <small class="text-muted"><i class="fas fa-envelope"></i> wahyudi98.ww@gmail.com<br><i class='fas fa-phone-square'></i> 082285658594</small>
-                                </div>
-                                <div class="col-1"><i class="fas fa-trash-alt text-danger"></i></div>
-                            </div>
-                            <div class="row detail">
-                                <div class="col-4 text-center text-muted pd">
-                                    <small >Bengkel</small><br>
-                                    <strong>004</strong>
-                                </div>
-                                <div class="col-4 text-center text-muted pd">
-                                    <small >Join</small><br>
-                                    <strong >3 M</strong>
-                                </div>
-                                <div class="col-4 text-center text-muted">
-                                    <small >Gender</small><br>
-                                    <strong>WOMAN</strong>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
 
             </div>
 
