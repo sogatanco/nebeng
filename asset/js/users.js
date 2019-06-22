@@ -53,7 +53,7 @@ $(document).ready(function(){
 
                     $.ajax({
                         type:'get',
-                        url:'http://localhost:8080/nebeng/api/general/bengkel?token=1234567&pemilik='+email,
+                        url:'../../nebeng/api/general/bengkel?token=1234567&pemilik='+email,
                         success:function(response){
                             jbengkel=response.data.length
                             $("#count"+i).html(addZero(jbengkel,3))
@@ -69,6 +69,7 @@ $(document).ready(function(){
         })
     }
 
+    // delete user
     $("#content").on("click","#hapus", function(){
         var conf=confirm("Are you sure to Delete it ?");
             if(conf==true){  
@@ -90,6 +91,15 @@ $(document).ready(function(){
                 })
             }
     })
+
+     // unapprove
+     $.ajax({
+        type:"get",
+        url:"../../../api/admin/viewbengkel?token="+Cookies.get("token"),
+        success: function(response){
+            $(".junapprove").html(response.data.length);
+        }
+    });
 
 // change null to unknown
     function ifUnknown(thedata){
